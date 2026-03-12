@@ -5,11 +5,12 @@ import { FiSend, FiCheck } from 'react-icons/fi'
 import { DATA } from '../../data/portfolio'
 
 /**
- * Contact — Section contact avec liens + formulaire stylé
+ * Contact - Section contact avec liens + formulaire stylé
  */
 export default function Contact() {
   const [ref, inView] = useInView({ threshold: 0.1, triggerOnce: true })
   const [sent, setSent] = useState(false)
+  const mapsUrl = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(DATA.location)}`
 
   function handleSubmit(e) {
     e.preventDefault()
@@ -22,9 +23,9 @@ export default function Contact() {
 
   const contactLinks = [
     { icon: '📧', label: 'Email', value: DATA.email, href: `mailto:${DATA.email}`, bg: 'rgba(124,58,237,0.06)' },
-    { icon: '💼', label: 'LinkedIn', value: 'Mouhamed SALL — Afrigen AI', href: DATA.linkedin, bg: 'rgba(6,182,212,0.06)' },
+    { icon: '💼', label: 'LinkedIn', value: 'Mouhamed SALL - Afrigen AI', href: DATA.linkedin, bg: 'rgba(6,182,212,0.06)' },
     { icon: '🐙', label: 'GitHub', value: '@Amethnb2218', href: DATA.github, bg: 'rgba(255,255,255,0.03)' },
-    { icon: '📍', label: 'Localisation', value: DATA.location, href: null, bg: 'rgba(16,185,129,0.06)' },
+    { icon: '📍', label: 'Localisation', value: DATA.location, href: mapsUrl, bg: 'rgba(16,185,129,0.06)' },
   ]
 
   return (
@@ -56,34 +57,31 @@ export default function Contact() {
             className="space-y-4"
           >
             {contactLinks.map((link, i) => {
-              const Wrapper = link.href ? 'a' : 'div'
-              const extraProps = link.href
-                ? { href: link.href, target: link.href.startsWith('mailto') ? undefined : '_blank', rel: 'noopener noreferrer' }
-                : {}
+              const isMail = link.href.startsWith('mailto:')
 
               return (
-                <motion.div
+                <motion.a
                   key={i}
+                  href={link.href}
+                  target={isMail ? undefined : '_blank'}
+                  rel={isMail ? undefined : 'noopener noreferrer'}
+                  aria-label={`Ouvrir ${link.label}`}
                   initial={{ opacity: 0, x: -20 }}
                   animate={inView ? { opacity: 1, x: 0 } : {}}
                   transition={{ duration: 0.5, delay: 0.3 + i * 0.1 }}
+                  className="cursor-hover pointer-events-auto flex items-center gap-5 glass-card rounded-2xl p-5 transition-all duration-500 hover:translate-x-2 hover:bg-white/[0.04] hover:border-accent/40"
                 >
-                  <Wrapper
-                    {...extraProps}
-                    className="cursor-hover flex items-center gap-5 glass-card rounded-2xl p-5 transition-all duration-500 hover:translate-x-2 hover:bg-white/[0.04] hover:border-accent/40"
+                  <div
+                    className="w-12 h-12 rounded-xl flex items-center justify-center text-lg flex-shrink-0 border border-white/[0.06]"
+                    style={{ background: link.bg }}
                   >
-                    <div
-                      className="w-12 h-12 rounded-xl flex items-center justify-center text-lg flex-shrink-0 border border-white/[0.06]"
-                      style={{ background: link.bg }}
-                    >
-                      {link.icon}
-                    </div>
-                    <div>
-                      <h4 className="font-syne text-sm font-bold">{link.label}</h4>
-                      <p className="text-xs text-white/30">{link.value}</p>
-                    </div>
-                  </Wrapper>
-                </motion.div>
+                    {link.icon}
+                  </div>
+                  <div>
+                    <h4 className="font-syne text-sm font-bold">{link.label}</h4>
+                    <p className="text-xs text-white/30">{link.value}</p>
+                  </div>
+                </motion.a>
               )
             })}
           </motion.div>
