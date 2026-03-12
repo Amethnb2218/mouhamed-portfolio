@@ -7,30 +7,30 @@ import { DATA } from '../../data/portfolio'
  */
 export default function Hero() {
   return (
-    <section className="relative min-h-screen flex items-center px-6 lg:px-12" id="hero">
+    <section className="relative min-h-screen flex items-center overflow-hidden px-4 pt-24 sm:px-6 lg:px-12" id="hero">
       {/* Orbes lumineux */}
       <div className="absolute -top-24 -right-24 w-[500px] h-[500px] rounded-full bg-accent/[0.08] blur-[120px] animate-float pointer-events-none" />
       <div className="absolute -bottom-12 -left-24 w-[400px] h-[400px] rounded-full bg-cyan/[0.05] blur-[120px] animate-float pointer-events-none" style={{ animationDelay: '3s' }} />
 
       <div className="max-w-[1400px] mx-auto w-full grid lg:grid-cols-[1fr_1fr] gap-8 lg:gap-12 items-center relative z-10">
         {/* Texte gauche */}
-        <div className="pt-8">
+        <div className="w-full pt-6 sm:pt-8">
           {/* Badge disponible */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.3 }}
-            className="inline-flex items-center gap-3 px-4 py-2 rounded-full bg-white/[0.03] border border-white/[0.08] backdrop-blur-sm mb-8"
+            className="mb-6 inline-flex max-w-full items-center gap-3 rounded-full border border-white/[0.08] bg-white/[0.03] px-4 py-2 backdrop-blur-sm sm:mb-8"
           >
             <span className="w-2 h-2 bg-green-500 rounded-full shadow-[0_0_12px_#22c55e] animate-pulse" />
-            <span className="text-xs font-semibold text-accent-lighter tracking-wide">
+            <span className="text-[11px] font-semibold tracking-[0.02em] text-accent-lighter sm:text-xs sm:tracking-wide">
               Disponible pour de nouveaux projets
             </span>
           </motion.div>
 
           {/* Nom */}
           <motion.h1
-            className="font-syne text-[clamp(3.5rem,7vw,6.5rem)] font-extrabold leading-[0.95] tracking-[-3px] mb-8"
+            className="mb-6 max-w-[8ch] font-syne text-[clamp(3.2rem,18vw,6.5rem)] font-extrabold leading-[0.88] tracking-[-0.05em] sm:mb-8 sm:max-w-none sm:leading-[0.95]"
           >
             <motion.span
               className="block overflow-hidden"
@@ -69,7 +69,7 @@ export default function Hero() {
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 1.0 }}
-            className="text-lg text-white/50 max-w-lg leading-relaxed mb-10"
+            className="mb-8 max-w-[34rem] text-base leading-relaxed text-white/60 sm:mb-10 sm:text-lg"
           >
             {DATA.bio}
           </motion.p>
@@ -79,11 +79,11 @@ export default function Hero() {
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 1.2 }}
-            className="flex gap-4 flex-wrap"
+            className="flex w-full flex-col gap-3 sm:w-auto sm:flex-row sm:flex-wrap sm:gap-4"
           >
             <a
               href="#contact"
-              className="cursor-hover group inline-flex items-center gap-3 px-7 py-4 rounded-2xl bg-gradient-to-r from-accent to-accent-light text-white font-semibold text-sm transition-all duration-400 hover:-translate-y-1 hover:shadow-[0_20px_60px_rgba(124,58,237,0.5)] relative overflow-hidden"
+              className="cursor-hover group relative inline-flex w-full items-center justify-center gap-3 overflow-hidden rounded-2xl bg-gradient-to-r from-accent to-accent-light px-6 py-4 text-center text-sm font-semibold text-white transition-all duration-400 hover:-translate-y-1 hover:shadow-[0_20px_60px_rgba(124,58,237,0.5)] sm:w-auto sm:px-7"
             >
               <span className="absolute inset-0 bg-gradient-to-r from-white/10 via-transparent to-white/5 opacity-0 group-hover:opacity-100 transition-opacity" />
               <span className="relative">Démarrer un projet</span>
@@ -91,7 +91,7 @@ export default function Hero() {
             </a>
             <a
               href="#projects"
-              className="cursor-hover inline-flex items-center gap-3 px-7 py-4 rounded-2xl border border-white/[0.08] text-white font-semibold text-sm backdrop-blur-sm transition-all duration-400 hover:-translate-y-1 hover:border-accent-light hover:text-accent-light hover:bg-accent/5"
+              className="cursor-hover inline-flex w-full items-center justify-center gap-3 rounded-2xl border border-white/[0.08] px-6 py-4 text-center text-sm font-semibold text-white backdrop-blur-sm transition-all duration-400 hover:-translate-y-1 hover:border-accent-light hover:text-accent-light hover:bg-accent/5 sm:w-auto sm:px-7"
             >
               Voir mes réalisations
             </a>
