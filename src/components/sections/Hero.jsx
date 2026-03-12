@@ -12,9 +12,9 @@ export default function Hero() {
       <div className="absolute -top-24 -right-24 w-[500px] h-[500px] rounded-full bg-accent/[0.08] blur-[120px] animate-float pointer-events-none" />
       <div className="absolute -bottom-12 -left-24 w-[400px] h-[400px] rounded-full bg-cyan/[0.05] blur-[120px] animate-float pointer-events-none" style={{ animationDelay: '3s' }} />
 
-      <div className="max-w-[1400px] mx-auto w-full grid lg:grid-cols-[1fr_1fr] gap-8 lg:gap-12 items-center relative z-10">
+      <div className="max-w-[1400px] mx-auto w-full grid lg:grid-cols-[minmax(0,1fr)_minmax(0,1fr)] gap-8 lg:gap-12 items-center relative z-10">
         {/* Texte gauche */}
-        <div className="w-full pt-6 sm:pt-8">
+        <div className="w-full min-w-0 pt-6 sm:pt-8">
           {/* Badge disponible */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -30,7 +30,7 @@ export default function Hero() {
 
           {/* Nom */}
           <motion.h1
-            className="mb-6 max-w-[8ch] font-syne text-[clamp(3.2rem,18vw,6.5rem)] font-extrabold leading-[0.88] tracking-[-0.05em] sm:mb-8 sm:max-w-none sm:leading-[0.95]"
+            className="mb-6 w-full max-w-full font-syne text-[clamp(2.35rem,13vw,6.5rem)] font-extrabold leading-[0.88] tracking-[-0.04em] sm:mb-8 sm:text-[clamp(3.1rem,11vw,6.5rem)] sm:leading-[0.92] lg:text-[clamp(4rem,8vw,6.5rem)]"
           >
             <motion.span
               className="block overflow-hidden"
